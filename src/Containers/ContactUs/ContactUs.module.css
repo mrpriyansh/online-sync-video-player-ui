@@ -6,7 +6,7 @@
     font-family: 'Roboto', sans-serif;
 }
 
-.text-header {
+.text_header {
     color: white;
     text-align: center;
     font-size: 2.2em;
@@ -29,7 +29,7 @@
     flex-direction: row;
 }
 
-.mrg-lf {
+.mrg_lf {
     margin-left: .75rem;
 }
 
