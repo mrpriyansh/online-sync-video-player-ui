@@ -11,9 +11,9 @@ const Login = () => {
         <br />
         <input className={styles.input} id="password" type="password" placeholder="Password" />
         <br />
-        <input className={styles.btn} type="submit" />
+        <input className={styles.btn} type="submit" value="Log In" />
         <p className={styles.p}>
-          Not Registered? <Link to="/register">Create a account</Link>
+          Not Registered? <Link to="/register">Create an account</Link>
         </p>
       </form>
     </div>
