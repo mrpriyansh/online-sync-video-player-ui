@@ -1,0 +1,21 @@
+.page_whole{
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+}
+
+.page_fraction{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	align-items: center;
+}
+
+@media(max-width:720px){
+	.page_fraction{
+		flex-direction: column-reverse;
+	}
+}

@@ -8,6 +8,7 @@ function Landing2() {
     <div className={Style.Landing}>
       <img alt="photo" src={net} className={Style.image} />
       <div className={Style.acc}>
+        <h1 className={Style.how}>How it works</h1>
         <Accordion
           title="Install Netflix Party"
           content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."

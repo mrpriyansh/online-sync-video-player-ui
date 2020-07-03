@@ -1,0 +1,43 @@
+.footer {
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding-top: 1rem;
+    background: #e7513b;
+    height: 40px;
+    flex: 1;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 0 1rem;
+}
+
+.column {
+    text-align: center;
+    padding-left: 1rem;
+    /* border: 1px solid wheat; */
+    padding-right: 1rem;
+    flex: 1;
+}
+
+.column h4 {
+    text-align: center;
+}
+
+.footer .bottom {
+    text-align: center;
+    height: 30px;
+    /* background: grey; */
+}
+
+.list li {
+    list-style: none;
+}
+
+.col_small {
+    text-align: center;
+    align-items: center;
+}

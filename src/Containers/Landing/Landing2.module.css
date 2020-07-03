@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&family=Yellowtail&display=swap');
 .Landing {
 	display: flex;
 	align-items: center;
@@ -5,13 +6,20 @@
 
 .acc {
 	width: 50%;
-	margin: 10%;
+	margin: 5%;
+	margin-top: 10%;
 	margin-left: 0%;
 }
 
 .image {
 	width: 50%;
-	margin: 10%;
+	margin: 5%;
+	margin-top: 10%;
+}
+.how{
+	 font-family: 'Roboto', sans-serif;
+	 color: #e7513b;
+	 margin-top: 0%;
 }
 
 
