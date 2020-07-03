@@ -1,0 +1,11 @@
+.wrapper {
+  background: #191919;
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  margin: max(80px, 10%) 0 10% 0;
+}
+
+
