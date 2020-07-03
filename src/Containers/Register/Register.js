@@ -20,7 +20,7 @@ const Register = () => {
           placeholder="Confirm Password"
         />
         <br />
-        <input className={styles.btn} type="submit" />
+        <input className={styles.btn} type="submit" value="Register" />
         <p className={styles.p}>
           Already have an account? <Link to="/login">Log In</Link>
         </p>

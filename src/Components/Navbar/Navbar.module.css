@@ -6,6 +6,7 @@
     background: #191919;
     height: 70px;
     border-bottom: 10px solid #e7513b;
+    z-index:10;
 }
 
 .navbar__navigation {

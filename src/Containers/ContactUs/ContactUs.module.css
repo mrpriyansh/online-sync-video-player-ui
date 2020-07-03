@@ -1,22 +1,26 @@
 .section_1 {
     padding-left: 8em;
-    padding-top: 8em;
     padding-right: 8em;
-    padding-bottom: 8em;
     font-family: 'Roboto', sans-serif;
 }
 
 .text_header {
-    color: white;
+    margin-top:0;
+    margin-bottom:1%;
+    color: #e7513b;
     text-align: center;
-    font-size: 2.2em;
+    font-size: 40px;
+}
+
+.text_1 {
+    font-size: 20px;
+    color:white;
 }
 
 .div_main {
     flex-wrap: wrap;
     justify-content: space-around;
-    margin-top: 4rem;
-    padding: 5rem;
+    margin-top:2%;
 }
 
 .fl_column {
@@ -30,7 +34,7 @@
 }
 
 .mrg_lf {
-    margin-left: .75rem;
+    margin-left: 10%;
 }
 
 .div_lines {
@@ -43,15 +47,15 @@
 .txtbx {
     min-width: 500px;
     min-height: 150px;
+    margin-bottom:2%;
 }
 
 .btn {
-    height: 40px;
-    border: 0px;
-    background: white;
-    color: #191919;
-    text-align: center;
-    cursor: pointer
+      padding: 10px 10px;
+      border-radius: 5px;
+      background-color: rgba(239, 62, 58, 1);
+      color: rgba(255, 255, 255, 0.8);
+      font-size: medium;
 }
 
 .br {
@@ -60,6 +64,7 @@
     height: 40px;
     background: white;
     padding: 5px 15px;
+    margin-bottom:20px;
 }
 
 .tc {
