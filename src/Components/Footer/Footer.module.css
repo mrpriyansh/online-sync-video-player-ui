@@ -1,11 +1,10 @@
 .footer {
-    position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
-    padding-top: 3rem;
+    padding-top: 1rem;
     background: #e7513b;
-    height: 200px;
+    height: 40px;
     flex: 1;
 }
 
@@ -30,7 +29,7 @@
 
 .footer .bottom {
     text-align: center;
-    height: 50px;
+    height: 30px;
     /* background: grey; */
 }
 
