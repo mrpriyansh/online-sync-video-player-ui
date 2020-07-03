@@ -15,7 +15,7 @@ const Register = () => {
         <br />
         <input
           className={styles.input}
-          id="password"
+          id="confirmpassword"
           type="password"
           placeholder="Confirm Password"
         />

@@ -1,6 +1,7 @@
 import React from 'react';
 import land from '../../Components/elements_1.module.css';
 import page from '../../Components/page_format_1.module.css';
+import Landing2 from './Landing2';
 import './Landing.css';
 
 function Landing() {
@@ -40,7 +41,9 @@ function Landing() {
           />
         </div>
       </div>
-      <div></div>
+      <div>
+        <Landing2 />
+      </div>
     </div>
   );
 }
