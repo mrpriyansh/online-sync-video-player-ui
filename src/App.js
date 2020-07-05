@@ -11,7 +11,9 @@ function App() {
   return (
     <Router>
       <div className={styles.wrapper}>
-        <div>{/* <Navbar /> */}</div>
+        <div>
+          <Navbar />
+        </div>
         <div className={styles.main}>
           <Switch>
             <Route exact path="/" component={Landing} />
