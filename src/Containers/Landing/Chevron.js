@@ -1,6 +1,7 @@
 import React from 'react';
 
 function Chevron(props) {
+  console.log(props);
   return (
     <svg
       className={props.className}
