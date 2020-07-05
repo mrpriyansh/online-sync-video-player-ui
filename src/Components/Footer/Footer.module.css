@@ -9,6 +9,12 @@
   font-size: 1rem;
   padding: 0 0.5em;
 }
+
+@media(max-width: 480px){
+  .footer{
+  font-size: 0.8rem;
+  }
+}
 /* 
 .row {
   display: flex;
@@ -27,10 +33,9 @@
 .column h4 {
   text-align: center;
 } */
-
+/* 
 .footer .bottom {
   font-size: 1em;
-  /* height: 100%; */
 }
 
 .list li {
@@ -40,4 +45,6 @@
 .col_small {
   text-align: center;
   align-items: center;
-}
+} */
+
+
