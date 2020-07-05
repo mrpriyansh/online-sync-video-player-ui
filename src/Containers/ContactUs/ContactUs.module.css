@@ -34,20 +34,15 @@
 }
 
 .mrg_lf {
-    margin-left: 10%;
+    margin-left: 27px;
 }
 
-.div_lines {
-    padding-bottom: 5rem;
-}
 .mrg {
     margin-bottom: .5rem;
 }
 
-.txtbx {
-    min-width: 500px;
-    min-height: 150px;
-    margin-bottom:2%;
+.email_inp {
+    min-width: 551px;
 }
 
 .btn {
@@ -59,14 +54,48 @@
 }
 
 .br {
-    border-radius: 3px;
-    border: 0px;
-    height: 40px;
-    background: white;
-    padding: 5px 15px;
-    margin-bottom:20px;
+  margin: 10px 0px;
+  padding: 10px 10px;
+  background: rgba(80, 80, 80, 0.5);
+  color: rgba(239, 62, 58, 1);
+  border-radius: 5px;
+  border: 0;
+  font-size: medium;
+}
+
+.div_form {
+    margin-top: 20px;
+}
+
+.txtbx {
+    min-width: 551px;
+    min-height: 150px;
+    resize: none;
+    margin-bottom:2%;
+    color: white;
 }
 
 .tc {
     text-align: center;
+}
+
+@media only screen and (max-width: 720px){
+    .section_1 {
+        float: left;
+        min-width: 40%;
+        align-items: center;
+        padding: auto;
+    }
+
+    .fl_row {
+        flex-direction: column;
+    }
+
+    .mrg_lf {
+        margin-left: 0px;
+    }
+
+    .br {
+        min-width: 300px;
+    }
 }
