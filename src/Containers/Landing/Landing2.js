@@ -6,7 +6,7 @@ import net from './image.png';
 function Landing2() {
   return (
     <div className={Style.Landing}>
-      <img alt="photo" src={net} className={Style.image} />
+      <img alt="pic" src={net} className={Style.image} />
       <div className={Style.acc}>
         <h1 className={Style.how}>How it works</h1>
         <Accordion

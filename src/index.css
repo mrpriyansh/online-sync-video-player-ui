@@ -25,3 +25,7 @@ code {
 .column {
   flex-flow: column;
 }
+
+*{
+  box-sizing: border-box;
+}
