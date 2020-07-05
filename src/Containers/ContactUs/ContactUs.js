@@ -5,15 +5,16 @@ function ContactUs() {
   return (
     <div>
       <section className={styles.section_1}>
-        <h1 className={styles.text_header}>Run into a bug, and still stuck?</h1>
+        <h1 className={styles.text_header}>Ran into a bug, and still stuck?</h1>
         <h2 className={styles.text_header}>Send us a message!</h2>
         <div className={`${styles.div_main} ${styles.fl_row}`}>
-          <div className={styles.div_lines}>
+          <div className={styles.mrg}>
             {/* <h2 className={styles.tc}>Lines</h2> */}
-            <p className={styles.text_1}>
+            <p className={`${styles.text_1} ${styles.tc}`}>
               We are constantly updating the app. Please try refreshing the browser and clearing the
+              cache.
               <br />
-              cache. If the issue still persists, please fill the form below
+              If the issue still persists, please fill the form below
             </p>
           </div>
           <div className={`${styles.fl_column} ${styles.div_form}`}>
@@ -32,7 +33,7 @@ function ContactUs() {
             <div className={styles.mrg}>
               <span className={styles.text_1}>E-Mail</span>
               <br />
-              <input type="email" className={styles.br}></input>
+              <input type="email" className={`${styles.br} ${styles.email_inp}`}></input>
             </div>
             <div className={styles.fl_column}>
               <div className={styles.mrg}>
