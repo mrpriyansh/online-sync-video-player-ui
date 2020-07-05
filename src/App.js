@@ -11,9 +11,7 @@ function App() {
   return (
     <Router>
       <div className={styles.wrapper}>
-        <div>
-          <Navbar />
-        </div>
+        <Navbar />
         <div className={styles.main}>
           <Switch>
             <Route exact path="/" component={Landing} />
@@ -21,9 +19,7 @@ function App() {
             <Route exact path={['/login', '/register']} component={Sign} />
           </Switch>
         </div>
-        <div>
-          <Footer />
-        </div>
+        <Footer />
       </div>
     </Router>
   );

@@ -1,7 +1,6 @@
 .navbar {
   position: fixed;
   top: 0;
-  left: 0;
   width: 100%;
   background: #191919;
   height: 70px;
@@ -17,7 +16,7 @@
 }
 
 .navbar__logo {
-  margin-left: 1rem;
+  margin-left: 0.5px;
   max-height: 40px;
   max-width: 40px;
 }
