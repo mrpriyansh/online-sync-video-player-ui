@@ -1,13 +1,15 @@
 .footer {
-  bottom: 0;
-  left: 0;
+  height: 2.6rem;
   width: 100%;
-  padding-top: 1rem;
   background: #e7513b;
-  height: 30px;
-  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 1rem;
+  padding: 0 0.5em;
 }
-
+/* 
 .row {
   display: flex;
   align-items: center;
@@ -24,11 +26,11 @@
 
 .column h4 {
   text-align: center;
-}
+} */
 
 .footer .bottom {
-  text-align: center;
-  height: 100%;
+  font-size: 1em;
+  /* height: 100%; */
 }
 
 .list li {
