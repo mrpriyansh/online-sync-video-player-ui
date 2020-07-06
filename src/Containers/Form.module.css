@@ -43,6 +43,11 @@
   margin: 20px auto;
   color: rgba(255, 255, 255, 0.8);
 }
+.p_error {
+  color: rgba(239, 62, 58, 1);
+  font-size:10px;
+  margin-left:5%;
+}
 
 @media(max-width: 480px){
 
