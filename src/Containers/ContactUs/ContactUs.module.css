@@ -1,5 +1,5 @@
 /*flex-classes start */
-.fl_column {
+.fl_col {
     display: flex;
     flex-direction: column;
 }
@@ -21,9 +21,11 @@
 }
 
 .div_header {
+    padding: 0rem 2rem;
     font-size: larger;
     color: #e7513b;
     text-align: center;
+    justify-content: center;
 }
 
 .div_main {
@@ -41,6 +43,7 @@
 /*div-classes end*/
 
 .input {
+    font-family: Ubuntu;
     width: 352px;
     margin: 5px 0px;
     padding: 10px 10px;
@@ -52,12 +55,13 @@
 }
 
 .btn {
-    margin-top: 10px;
+    margin: 0px 80px;
     padding: 10px 10px;
     border-radius: 5px;
     background-color: rgba(239, 62, 58, 1);
     color: rgba(255, 255, 255, 0.8);
     font-size: medium;
+    cursor: pointer;
 }
 
 .txtbx {
@@ -68,8 +72,18 @@
     color: white;
 }
 
+.error {
+  color: rgba(239, 62, 58, 1);
+  font-size:15px;
+  margin:0% 5% 3% 5%;
+}
+
+.emoji {
+    font-size: 20px;
+}
+
 @media only screen and (max-width: 720px){
     .input {
-        width: 100%;
+        min-width: 90%;
     }
 }

@@ -1,7 +1,13 @@
 import React from 'react';
+import { useForm } from 'react-hook-form';
 import styles from './ContactUs.module.css';
 
 function ContactUs() {
+  const { register, handleSubmit, errors } = useForm();
+  const onSubmit = data => {
+    console.log(data);
+  };
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.div_header}>
@@ -17,31 +23,81 @@ function ContactUs() {
             If the issue still persists, please fill the form below
           </p>
         </div>
-        <div className={`${styles.fl_column} ${styles.div_rh}`}>
-          <div>
-            <span>Full Name</span>
-            <br />
-            <input type="text" className={styles.input}></input>
-          </div>
-          <div>
-            <span>E-Mail</span>
-            <br />
-            <input type="email" className={styles.input}></input>
-          </div>
-          <div>
-            <div>
-              <span>Description</span>
-              <br />
-              <textarea
-                placeholder="Describe the problem here"
-                className={`${styles.txtbx} ${styles.input}`}
-              ></textarea>
-            </div>
-            <div>
-              <button className={styles.btn}>Report Bug</button>
-            </div>
-          </div>
-        </div>
+        <form onSubmit={handleSubmit(onSubmit)} className={`${styles.fl_col} ${styles.div_rh}`}>
+          <label>Full Name</label>
+          <br />
+          <input
+            id="fullName"
+            name="fullName"
+            type="text"
+            className={styles.input}
+            ref={register({ required: true, pattern: /^[a-zA-Z ]+$/ })}
+          />
+          {errors.fullName && errors.fullName.type === 'required' && (
+            <p className={styles.error}>
+              <span className={styles.emoji} role="img" aria-label="error">
+                ⚠️
+              </span>
+              This field is required
+            </p>
+          )}
+          {errors.fullName && errors.fullName.type === 'pattern' && (
+            <p className={styles.error}>
+              <span className={styles.emoji} role="img" aria-label="error">
+                ⚠️
+              </span>
+              Please input a valid Name
+            </p>
+          )}
+
+          <label>E-Mail</label>
+          <br />
+          <input
+            id="eMail"
+            name="eMail"
+            className={styles.input}
+            ref={register({
+              required: true,
+              pattern: /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+            })}
+          />
+          {errors.eMail && errors.eMail.type === 'required' && (
+            <p className={styles.error}>
+              <span className={styles.emoji} role="img" aria-label="error">
+                ⚠️
+              </span>
+              This field is required
+            </p>
+          )}
+          {errors.eMail && errors.eMail.type === 'pattern' && (
+            <p className={styles.error}>
+              <span className={styles.emoji} role="img" aria-label="error">
+                ⚠️
+              </span>
+              Please input a valid E-Mail address
+            </p>
+          )}
+
+          <label>Description</label>
+          <br />
+          <textarea
+            id="description"
+            name="description"
+            placeholder="Describe the problem here"
+            className={`${styles.txtbx} ${styles.input}`}
+            ref={register({ required: true })}
+          />
+          {errors.description && errors.description.type === 'required' && (
+            <p className={styles.error}>
+              <span className={styles.emoji} role="img" aria-label="error">
+                ⚠️
+              </span>
+              This field is required
+            </p>
+          )}
+
+          <input type="submit" className={styles.btn} value="Report Bug" />
+        </form>
       </div>
     </div>
   );
