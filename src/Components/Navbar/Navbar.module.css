@@ -1,56 +1,57 @@
 .navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background: #191919;
-    height: 70px;
-    border-bottom: 10px solid #e7513b;
-    z-index:10;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: #191919;
+  height: 70px;
+  border-bottom: 10px solid #e7513b;
+  z-index: 10;
 }
 
 .navbar__navigation {
-    display: flex;
-    align-items: center;
-    height: 100%;
-    padding: 0px 1rem;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0px 1rem;
 }
 
 .navbar__logo {
-    margin-left: 1rem;
-    max-height: 40px;
-    max-width: 40px;
+  margin-left: 0.5px;
+  max-height: 40px;
+  max-width: 40px;
 }
 
 .navbar__logo a {
-    color: white;
-    text-decoration: none;
-    font-size: 2rem;
-    padding: 0.5rem;
+  color: white;
+  text-decoration: none;
+  font-size: 2rem;
+  padding: 0.5rem;
 }
 
 .spacer {
-    flex: 1;
+  flex: 1;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .navbar_navigation_items ul {
-    list-style: none;
-    display: flex;
-    margin: 0;
-    padding: 0;
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
 }
 
 .navbar_navigation_items li {
-    color: white;
-    padding: 0 0.5rem;
+  color: white;
+  padding: 0 0.5rem;
 }
 
- .navbar_navigation_items a {
-    color: white;
-    text-decoration: none;
-} 
+.navbar_navigation_items a {
+  color: white;
+  text-decoration: none;
+}
 
 .navbar_navigation_items a:hover,
 .navbar_navigation_items a:active {
-    color: orange;
+  color: orange;
 }

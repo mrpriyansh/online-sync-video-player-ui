@@ -1,29 +1,5 @@
-.section_1 {
-    padding-left: 8em;
-    padding-right: 8em;
-    font-family: 'Roboto', sans-serif;
-}
-
-.text_header {
-    margin-top:0;
-    margin-bottom:1%;
-    color: #e7513b;
-    text-align: center;
-    font-size: 40px;
-}
-
-.text_1 {
-    font-size: 20px;
-    color:white;
-}
-
-.div_main {
-    flex-wrap: wrap;
-    justify-content: space-around;
-    margin-top:2%;
-}
-
-.fl_column {
+/*flex-classes start */
+.fl_col {
     display: flex;
     flex-direction: column;
 }
@@ -31,42 +7,83 @@
 .fl_row {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap; 
+    justify-content: center;
+}
+/* flex-classes end */
+
+/* div-classes start*/
+.wrapper {
+    font-size: 20px;
+    color:white;
+    font-family: 'Roboto', sans-serif;
+
 }
 
-.mrg_lf {
-    margin-left: 10%;
+.div_header {
+    padding: 0rem 2rem;
+    font-size: larger;
+    color: #e7513b;
+    text-align: center;
+    justify-content: center;
 }
 
-.div_lines {
-    padding-bottom: 5rem;
-}
-.mrg {
-    margin-bottom: .5rem;
+.div_main {
+    justify-content: space-around;
+    margin-bottom: 3rem;
 }
 
-.txtbx {
-    min-width: 500px;
-    min-height: 150px;
-    margin-bottom:2%;
+.div_lf {
+    margin: 0rem 3rem;
+}
+
+.div_rh {
+    margin:1rem 0rem 2rem 0rem;
+}
+/*div-classes end*/
+
+.input {
+    font-family: Ubuntu;
+    width: 352px;
+    margin: 5px 0px;
+    padding: 10px 10px;
+    background: rgba(80, 80, 80, 0.5);
+    color: rgba(239, 62, 58, 1);
+    border-radius: 5px;
+    border: 0;
+    font-size: medium;
 }
 
 .btn {
-      padding: 10px 10px;
-      border-radius: 5px;
-      background-color: rgba(239, 62, 58, 1);
-      color: rgba(255, 255, 255, 0.8);
-      font-size: medium;
+    margin: 0px 80px;
+    padding: 10px 10px;
+    border-radius: 5px;
+    background-color: rgba(239, 62, 58, 1);
+    color: rgba(255, 255, 255, 0.8);
+    font-size: medium;
+    cursor: pointer;
 }
 
-.br {
-    border-radius: 3px;
-    border: 0px;
-    height: 40px;
-    background: white;
-    padding: 5px 15px;
-    margin-bottom:20px;
+.txtbx {
+    width: 352px;
+    height: 125px;
+    resize: none;
+    margin-bottom:2%;
+    color: white;
 }
 
-.tc {
-    text-align: center;
+.error {
+  color: rgba(239, 62, 58, 1);
+  font-size:15px;
+  margin:0% 5% 3% 5%;
+}
+
+.emoji {
+    font-size: 20px;
+}
+
+@media only screen and (max-width: 720px){
+    .input {
+        min-width: 90%;
+    }
 }

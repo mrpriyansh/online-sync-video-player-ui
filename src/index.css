@@ -6,7 +6,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   box-sizing: border-box;
-  background-color: #e7513b;
+  background-color: #191919;
 }
 
 code {
@@ -24,4 +24,8 @@ code {
 
 .column {
   flex-flow: column;
+}
+
+*{
+  box-sizing: border-box;
 }
