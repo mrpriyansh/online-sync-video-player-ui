@@ -5,6 +5,7 @@ import Navbar from './Components/Navbar/Navbar';
 import Footer from './Components/Footer/Footer';
 import ContactUs from './Containers/ContactUs/ContactUs';
 import Sign from './Containers/Sign/Sign';
+import Join from './Containers/Join/Join';
 import styles from './App.module.css';
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
             <Route exact path={['/login', '/register']} component={Sign} />
           </Switch>
         </div>
+        {/* <Join /> */}
         <Footer />
       </div>
     </Router>
