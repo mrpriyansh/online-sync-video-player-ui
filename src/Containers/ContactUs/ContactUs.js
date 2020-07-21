@@ -25,7 +25,7 @@ function ContactUs() {
         </div>
         <form onSubmit={handleSubmit(onSubmit)} className={`${styles.fl_col} ${styles.div_rh}`}>
           <label>Full Name</label>
-          <br />
+          {/* <br /> */}
           <input
             id="fullName"
             name="fullName"
@@ -50,8 +50,9 @@ function ContactUs() {
             </p>
           )}
 
-          <label>E-Mail</label>
           <br />
+          <label>E-Mail</label>
+          {/* <br /> */}
           <input
             id="eMail"
             name="eMail"
@@ -78,8 +79,9 @@ function ContactUs() {
             </p>
           )}
 
-          <label>Description</label>
           <br />
+          <label>Description</label>
+          {/* <br /> */}
           <textarea
             id="description"
             name="description"
@@ -96,6 +98,7 @@ function ContactUs() {
             </p>
           )}
 
+          <br />
           <input type="submit" className={styles.btn} value="Report Bug" />
         </form>
       </div>
