@@ -1,0 +1,12 @@
+.title-class{
+    color: #ef3e3a;
+}
+
+.swal2-icon.swal2-error{
+    color: #ef3e3a;
+    border-color: #ef3e3a;
+}
+
+.swal2-x-mark span{
+    background-color: #ef3e3a !important;
+}

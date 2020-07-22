@@ -1,31 +1,54 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import styles from './Navbar.module.css';
+import { useAuth } from '../../service/hooks/Auth';
 
-const navbar = props => (
-  <header className={styles.navbar}>
-    <nav className={styles.navbar__navigation}>
-      <div>
-        <Link to="/">
-          <img className={styles.navbar__logo} alt="home" src="favicon.ico" />
-        </Link>
-      </div>
-      <div className={styles.spacer}></div>
-      <div className={styles.navbar_navigation_items}>
-        <ul>
-          <li>
-            <Link to="/contact">Contact</Link>
-          </li>
-          <li>
-            <Link to="/login">Login</Link>
-          </li>
-          <li>
-            <Link to="/register">Register</Link>
-          </li>
-        </ul>
-      </div>
-    </nav>
-  </header>
-);
+const Navbar = props => {
+  const { authToken, setAuthToken, setCurrentUser } = useAuth();
+  const history = useHistory();
+  const handleLogout = event => {
+    console.log('b');
+    setAuthToken(false);
+    localStorage.removeItem('token');
+    setCurrentUser(null);
+    history.replace('/');
+  };
+  return (
+    <header className={styles.navbar}>
+      <nav className={styles.navbar__navigation}>
+        <div>
+          <Link to="/">
+            <img className={styles.navbar__logo} alt="home" src="favicon.ico" />
+          </Link>
+        </div>
+        <div className={styles.spacer}></div>
+        <div className={styles.navbar_navigation_items}>
+          <ul>
+            <li>
+              <Link to="/contact">Contact</Link>
+            </li>
+            {!authToken ? (
+              <>
+                <li>
+                  <Link to="/login">Login</Link>
+                </li>
+                <li>
+                  <Link to="/register">Register</Link>
+                </li>
+              </>
+            ) : (
+              <li>
+                <div onClick={handleLogout} className={styles.logout_button}>
+                  {' '}
+                  Logout{' '}
+                </div>
+              </li>
+            )}
+          </ul>
+        </div>
+      </nav>
+    </header>
+  );
+};
 
-export default navbar;
+export default Navbar;

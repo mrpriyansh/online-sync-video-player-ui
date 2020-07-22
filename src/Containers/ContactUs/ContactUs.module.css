@@ -61,7 +61,14 @@
     background-color: rgba(239, 62, 58, 1);
     color: rgba(255, 255, 255, 0.8);
     font-size: medium;
+    border: none;
     cursor: pointer;
+}
+
+.btn:disabled{
+  background-color: #e08787;
+  color: #dcdcdc;
+  cursor: default;
 }
 
 .txtbx {

@@ -55,3 +55,10 @@
 .navbar_navigation_items a:active {
   color: orange;
 }
+
+.logout_button{
+  background: transparent;
+  color: #fff;
+  font-size: 1em;
+  cursor: pointer;
+}
