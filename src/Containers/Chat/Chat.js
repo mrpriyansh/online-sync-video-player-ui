@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import queryString from 'query-strings';
+import queryString from 'query-string';
 import io from 'socket.io-client';
+
+import style from './Chat.module.css';
+
+import TextContainer from '../TextContainer/TextContainer';
+import InfoBar from '../InfoBar/InfoBar';
+import Input from '../Input/Input';
+import Messages from '../Messages/Messages';
 
 let socket;
 
@@ -35,7 +42,7 @@ const Chat = ({ location }) => {
 
   useEffect(() => {
     socket.on('message', Message => {
-      setMessages(Messages => [...Messages, Message]);
+      setMessages([...messages, Message]);
     });
 
     socket.on('roomData', ({ Users }) => {
@@ -51,9 +58,16 @@ const Chat = ({ location }) => {
     }
   };
 
+  console.log(name, room);
+
   return (
-    <div>
-      <h1>Chat</h1>
+    <div className={style.outerContainer}>
+      <div className={style.container}>
+        <InfoBar room={room} />
+        <Messages messages={messages} name={name} />
+        <Input message={message} setMessage={setMessage} sendMessage={sendMessage} />
+      </div>
+      <TextContainer users={users} />
     </div>
   );
 };

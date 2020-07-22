@@ -6,6 +6,7 @@ import Footer from './Components/Footer/Footer';
 import ContactUs from './Containers/ContactUs/ContactUs';
 import Sign from './Containers/Sign/Sign';
 import Join from './Containers/Join/Join';
+import Chat from './Containers/Chat/Chat';
 import styles from './App.module.css';
 import { AuthContext } from './service/hooks/Auth';
 import { apiUrl } from './service/config';
