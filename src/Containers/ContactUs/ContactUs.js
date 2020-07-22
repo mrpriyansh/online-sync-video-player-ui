@@ -1,11 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import styles from './ContactUs.module.css';
+import { triggerAlert } from '../../service/getAlert/getAlert';
+import { apiUrl } from '../../service/config';
+import handleError from '../../service/handleError';
 
 function ContactUs() {
   const { register, handleSubmit, errors } = useForm();
+  const [isLoading, setIsLoading] = useState(false);
+
   const onSubmit = data => {
+    setIsLoading(true);
     console.log(data);
+    fetch(`${apiUrl}/contact`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    })
+      .then(response => response.json().then(body => ({ status: response.status, body })))
+      .then(res => {
+        if (res.status === 200) {
+          triggerAlert({ icon: 'success', title: 'Thank You! We will reach you soon!' });
+        } else throw res;
+      })
+      .catch(err => handleError(err, triggerAlert))
+      .finally(() => setIsLoading(false));
   };
 
   return (
@@ -27,13 +46,13 @@ function ContactUs() {
           <label>Full Name</label>
           {/* <br /> */}
           <input
-            id="fullName"
-            name="fullName"
+            id="name"
+            name="name"
             type="text"
             className={styles.input}
             ref={register({ required: true, pattern: /^[a-zA-Z ]+$/ })}
           />
-          {errors.fullName && errors.fullName.type === 'required' && (
+          {errors.name && errors.name.type === 'required' && (
             <p className={styles.error}>
               <span className={styles.emoji} role="img" aria-label="error">
                 ⚠️
@@ -41,7 +60,7 @@ function ContactUs() {
               This field is required
             </p>
           )}
-          {errors.fullName && errors.fullName.type === 'pattern' && (
+          {errors.name && errors.name.type === 'pattern' && (
             <p className={styles.error}>
               <span className={styles.emoji} role="img" aria-label="error">
                 ⚠️
@@ -54,15 +73,15 @@ function ContactUs() {
           <label>E-Mail</label>
           {/* <br /> */}
           <input
-            id="eMail"
-            name="eMail"
+            id="email"
+            name="email"
             className={styles.input}
             ref={register({
               required: true,
               pattern: /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
             })}
           />
-          {errors.eMail && errors.eMail.type === 'required' && (
+          {errors.email && errors.email.type === 'required' && (
             <p className={styles.error}>
               <span className={styles.emoji} role="img" aria-label="error">
                 ⚠️
@@ -70,7 +89,7 @@ function ContactUs() {
               This field is required
             </p>
           )}
-          {errors.eMail && errors.eMail.type === 'pattern' && (
+          {errors.email && errors.email.type === 'pattern' && (
             <p className={styles.error}>
               <span className={styles.emoji} role="img" aria-label="error">
                 ⚠️
@@ -99,7 +118,7 @@ function ContactUs() {
           )}
 
           <br />
-          <input type="submit" className={styles.btn} value="Report Bug" />
+          <input type="submit" className={styles.btn} disabled={isLoading} value="Report Bug" />
         </form>
       </div>
     </div>

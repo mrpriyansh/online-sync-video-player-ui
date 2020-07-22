@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Landing from './Containers/Landing/Landing';
 import Navbar from './Components/Navbar/Navbar';
@@ -7,22 +7,57 @@ import ContactUs from './Containers/ContactUs/ContactUs';
 import Sign from './Containers/Sign/Sign';
 import Join from './Containers/Join/Join';
 import styles from './App.module.css';
+import { AuthContext } from './service/hooks/Auth';
+import { apiUrl } from './service/config';
+import handleError from './service/handleError';
 
 function App() {
+  const [authToken, setAuthToken] = useState(false);
+  const [currentUser, setCurrentUser] = useState();
+
+  useEffect(() => {
+    // token from localstorage
+    const token = window.localStorage.getItem('token');
+    if (token) {
+      setAuthToken(token);
+    }
+  }, []);
+
+  window.onstorage = () => {
+    const token = window.localStorage.getItem('token');
+    setAuthToken(token);
+  };
+
+  useEffect(() => {
+    if (authToken) {
+      fetch(`${apiUrl}/userdetails`, {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${authToken}` },
+      })
+        .then(response => response.json().then(body => ({ status: response.status, body })))
+        .then(res => {
+          if (res.status === 200) {
+            console.log(res.body);
+          } else throw res;
+        })
+        .catch(err => handleError(err, setAuthToken));
+    }
+  }, [authToken]);
   return (
     <Router>
-      <div className={styles.wrapper}>
-        <Navbar />
-        <div className={styles.main}>
-          <Switch>
-            <Route exact path="/" component={Landing} />
-            <Route exact path="/contact" component={ContactUs} />
-            <Route exact path={['/login', '/register']} component={Sign} />
-          </Switch>
+      <AuthContext.Provider value={{ authToken, setAuthToken, currentUser, setCurrentUser }}>
+        <div className={styles.wrapper}>
+          <Navbar />
+          <div className={styles.main}>
+            <Switch>
+              <Route exact path="/" component={authToken ? Join : Landing} />
+              <Route exact path="/contact" component={ContactUs} />
+              <Route exact path={['/login', '/register']} component={Sign} />
+            </Switch>
+          </div>
+          <Footer />
         </div>
-        {/* <Join /> */}
-        <Footer />
-      </div>
+      </AuthContext.Provider>
     </Router>
   );
 }

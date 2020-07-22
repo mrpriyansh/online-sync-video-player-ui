@@ -1,14 +1,35 @@
-import React, { useRef } from 'react';
+/* eslint-disable jsx-a11y/accessible-emoji */
+import React, { useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import styles from '../Form.module.css';
+import { apiUrl } from '../../service/config';
+import handleError from '../../service/handleError';
+import { triggerAlert } from '../../service/getAlert/getAlert';
+import { useAuth } from '../../service/hooks/Auth';
 
 const Register = () => {
   const { register, handleSubmit, errors, watch } = useForm();
+  const { setAuthToken } = useAuth();
+  const [isLoading, setIsLoading] = useState(false);
   const password = useRef({});
   password.current = watch('password', '');
   const onSubmit = data => {
-    console.log(data);
+    setIsLoading(true);
+    fetch(`${apiUrl}/register`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    })
+      .then(response => response.json().then(body => ({ status: response.status, body })))
+      .then(res => {
+        if (res.status === 200) {
+          setAuthToken(res.body.token);
+          window.localStorage.setItem('token', res.body.token);
+        } else throw res;
+      })
+      .catch(err => handleError(err, triggerAlert))
+      .finally(() => setIsLoading(false));
   };
 
   return (
@@ -71,7 +92,7 @@ const Register = () => {
           <p className={styles.p_error}>{errors.confirmPassword.message}</p>
         )}
         <br />
-        <input className={styles.btn} type="submit" value="Register" />
+        <input className={styles.btn} disabled={isLoading} type="submit" value="Register" />
         <p className={styles.p}>
           Already have an account? <Link to="/login">Log In</Link>
         </p>

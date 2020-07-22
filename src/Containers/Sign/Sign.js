@@ -1,10 +1,15 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import Login from '../Login/Login';
 import Register from '../Register/Register';
 import styles from './Sign.module.css';
+import { useAuth } from '../../service/hooks/Auth';
 
 const Sign = () => {
+  const { authToken } = useAuth();
+  if (authToken) {
+    return <Redirect to="/" />;
+  }
   return (
     <div className={styles.wrapper}>
       <div className={styles.imgcontainer}>
