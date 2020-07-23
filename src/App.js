@@ -39,11 +39,13 @@ function App() {
         .then(res => {
           if (res.status === 200) {
             console.log(res.body);
+            setCurrentUser(res.body);
           } else throw res;
         })
         .catch(err => handleError(err, setAuthToken));
     }
   }, [authToken]);
+
   return (
     <Router>
       <AuthContext.Provider value={{ authToken, setAuthToken, currentUser, setCurrentUser }}>
@@ -52,6 +54,7 @@ function App() {
           <div className={styles.main}>
             <Switch>
               <Route exact path="/" component={authToken ? Join : Landing} />
+              <Route path="/watch" component={authToken ? Chat : Landing} />
               <Route exact path="/contact" component={ContactUs} />
               <Route exact path={['/login', '/register']} component={Sign} />
             </Switch>

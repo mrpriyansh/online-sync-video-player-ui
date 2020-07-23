@@ -7,7 +7,6 @@ const Navbar = props => {
   const { authToken, setAuthToken, setCurrentUser } = useAuth();
   const history = useHistory();
   const handleLogout = event => {
-    console.log('b');
     setAuthToken(false);
     localStorage.removeItem('token');
     setCurrentUser(null);
