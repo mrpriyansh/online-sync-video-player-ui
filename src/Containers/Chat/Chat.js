@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import queryString from 'query-string';
 import io from 'socket.io-client';
 import { useAuth } from '../../service/hooks/Auth';
-
+import { apiUrl } from '../../service/config';
 import style from './Chat.module.css';
 // import TextContainer from '../TextContainer/TextContainer';
 
@@ -18,7 +18,7 @@ const Chat = () => {
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState([]);
 
-  const ENDPOINT = 'localhost:4000';
+  const ENDPOINT = apiUrl;
 
   useEffect(() => {
     const { room } = queryString.parse(window.location.search);
