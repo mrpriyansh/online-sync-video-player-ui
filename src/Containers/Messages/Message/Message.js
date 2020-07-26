@@ -6,13 +6,13 @@ import style from './Message.module.css';
 const Message = ({ message: { user, text }, name }) => {
   let isSentByCurrentUser = false;
 
-  const trimmedName = name.trim().toLowerCase();
-
-  if (user === trimmedName) isSentByCurrentUser = true;
+  if (user === name) isSentByCurrentUser = true;
 
   return isSentByCurrentUser ? (
     <div className={`${style.messageContainer} ${style.justifyEnd}`}>
-      <p className={`${style.sentText} ${style.pr_10}`}>{trimmedName}</p>
+      {!isSentByCurrentUser && (
+        <p className={`${style.sentText} ${style.pr_10}`}>{name.split(' ')[0]}</p>
+      )}
       <div className={`${style.messageBox} ${style.backgroundBlue}`}>
         <p className={`${style.messageText} ${style.colorWhite}`}>{ReactEmoji.emojify(text)}</p>
       </div>
