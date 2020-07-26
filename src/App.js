@@ -38,7 +38,7 @@ function App() {
         .then(response => response.json().then(body => ({ status: response.status, body })))
         .then(res => {
           if (res.status === 200) {
-            console.log(res.body);
+            window.localStorage.setItem('user', JSON.stringify(res.body));
             setCurrentUser(res.body);
           } else throw res;
         })
@@ -54,7 +54,8 @@ function App() {
           <div className={styles.main}>
             <Switch>
               <Route exact path="/" component={authToken ? Join : Landing} />
-              <Route path="/watch" component={authToken ? Chat : Landing} />
+              <Route path="/watch">{authToken ? <Chat /> : <Landing />}</Route>
+              {/* <Route path="/watch" component={authToken ? Chat : Landing} /> */}
               <Route exact path="/contact" component={ContactUs} />
               <Route exact path={['/login', '/register']} component={Sign} />
             </Switch>
