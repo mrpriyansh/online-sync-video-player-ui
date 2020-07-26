@@ -67,12 +67,13 @@ const Chat = () => {
       });
     }
   };
+  if (!currentUser) return <p> Loading </p>;
 
   return (
     <div className={style.outerContainer}>
       <div className={style.container}>
         <InfoBar room={curRoom} />
-        <Messages messages={messages} name={currentUser ? currentUser.name : null} />
+        <Messages messages={messages} name={currentUser?.name} />
         <Input message={message} setMessage={setMessage} sendMessage={sendMessage} />
       </div>
       {/* <TextContainer users={users} /> */}
