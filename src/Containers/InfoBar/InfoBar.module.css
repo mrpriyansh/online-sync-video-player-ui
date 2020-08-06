@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #2979FF;
+  background: #e7513b;
   border-radius: 4px 4px 0 0;
   height: 60px;
   width: 100%;
@@ -23,6 +23,29 @@
   margin-right: 5%;
 }
 
+.button {
+  margin-top: 1%;
+  margin-right:5%;
+  border:none;
+  background: #e7513b;
+  color: white;
+  cursor: pointer;
+}
+
 .onlineIcon {
   margin-right: 5%;
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+  .infoBar {
+    height: 30px;
+    width: 100%;
+  }
+}
+
+@media (min-width: 480px) and (max-width: 1200px) {
+  .infoBar {
+    height: 30px;
+    width: 100%;
+  }
 }

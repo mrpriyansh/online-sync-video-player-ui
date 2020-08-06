@@ -5,11 +5,11 @@ import Message from './Message/Message';
 
 import style from './Messages.module.css';
 
-const Messages = ({ messages, name }) => (
-  <ScrollToBottom className={style.messages}>
+const Messages = ({ messages, name, visible }) => (
+  <ScrollToBottom className={style.messages} style={{ opacity: visible }}>
     {messages.map((message, i) => (
       <div key={i}>
-        <Message message={message} name={name} />
+        <Message message={message} name={name} visible={visible} />
       </div>
     ))}
   </ScrollToBottom>
