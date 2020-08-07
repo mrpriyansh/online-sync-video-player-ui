@@ -26,8 +26,9 @@
   margin-left:1%;
   min-width: 65%;
   max-width: 65%;
-  min-height: 80vh;
-  max-height: 80vh;
+  height: 80vh;
+  /* min-height: 80vh;
+  max-height: 80vh; */
   border: 1px solid red;
 }
 

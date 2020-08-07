@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import queryString from 'query-string';
 import io from 'socket.io-client';
 import { useHistory } from 'react-router';
-import { useAuth } from '../../service/hooks/Auth';
-import { apiUrl } from '../../service/config';
+import ReactPlayer from 'react-player/youtube';
+import { apiUrl } from '../../services/config';
 import style from './Chat.module.css';
 // import TextContainer from '../TextContainer/TextContainer';
 
@@ -16,9 +16,7 @@ let socket;
 const Chat = () => {
   // const { currentUser } = useAuth();
   const currentUser = JSON.parse(window.localStorage.getItem('user'));
-  // console.log(currentUser);
-  const [showChatBox, setShowChatBox] = useState(0);
-  // const props = useSpring(showChatBox ?{opacity:1}:{opacity:0});
+  const [showChatBox, setShowChatBox] = useState(1);
   const [curRoom, setRoom] = useState('');
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState([]);
@@ -75,7 +73,12 @@ const Chat = () => {
   return (
     <div className={style.outerContainer}>
       <div className={style.videoContainer}>
-        <h1>hello</h1>
+        <ReactPlayer
+          url="https://www.youtube.com/watch?v=wF_B_aagLfI"
+          width="100%"
+          height="100%"
+          controls={true}
+        />
       </div>
       <div className={style.container}>
         <InfoBar
