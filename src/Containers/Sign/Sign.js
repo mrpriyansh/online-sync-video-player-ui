@@ -3,7 +3,7 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import Login from '../Login/Login';
 import Register from '../Register/Register';
 import styles from './Sign.module.css';
-import { useAuth } from '../../service/hooks/Auth';
+import { useAuth } from '../../services/hooks/Auth';
 
 const Sign = () => {
   const { authToken } = useAuth();

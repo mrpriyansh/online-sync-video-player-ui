@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import styles from './ContactUs.module.css';
-import { triggerAlert } from '../../service/getAlert/getAlert';
-import { apiUrl } from '../../service/config';
-import handleError from '../../service/handleError';
+import { triggerAlert } from '../../services/getAlert/getAlert';
+import { apiUrl } from '../../services/config';
+import handleError from '../../services/handleError';
 
 function ContactUs() {
   const { register, handleSubmit, errors } = useForm();

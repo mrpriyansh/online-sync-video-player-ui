@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import styles from './Navbar.module.css';
-import { useAuth } from '../../service/hooks/Auth';
+import { useAuth } from '../../services/hooks/Auth';
 
 const Navbar = props => {
   const { authToken, setAuthToken, setCurrentUser } = useAuth();

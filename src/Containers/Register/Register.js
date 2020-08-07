@@ -3,10 +3,10 @@ import React, { useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import styles from '../Form.module.css';
-import { apiUrl } from '../../service/config';
-import handleError from '../../service/handleError';
-import { triggerAlert } from '../../service/getAlert/getAlert';
-import { useAuth } from '../../service/hooks/Auth';
+import { apiUrl } from '../../services/config';
+import handleError from '../../services/handleError';
+import { triggerAlert } from '../../services/getAlert/getAlert';
+import { useAuth } from '../../services/hooks/Auth';
 
 const Register = () => {
   const { register, handleSubmit, errors, watch } = useForm();
