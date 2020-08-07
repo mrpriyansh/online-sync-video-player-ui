@@ -1,5 +1,17 @@
 .messages {
-  padding: 5% 0;
+  padding: 2% 0;
   overflow: auto;
   flex: auto;
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+  .messages {
+    padding: 2% 0;
+  }
+}
+
+@media (min-width: 480px) and (max-width: 1200px) {
+  .messages {
+    padding: 2% 0;
+  }
 }

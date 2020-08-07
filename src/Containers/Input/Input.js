@@ -2,8 +2,8 @@ import React from 'react';
 
 import style from './Input.module.css';
 
-const Input = ({ setMessage, sendMessage, message }) => (
-  <form className={style.form}>
+const Input = ({ setMessage, sendMessage, message, visible }) => (
+  <form className={style.form} style={{ opacity: visible }}>
     <input
       className={style.input}
       type="text"

@@ -5,17 +5,15 @@ import closeIcon from '../../Utils/closeIcon.png';
 
 import style from './InfoBar.module.css';
 
-const InfoBar = ({ room }) => (
+const InfoBar = ({ room, collapse }) => (
   <div className={style.infoBar}>
     <div className={style.leftInnerContainer}>
       <img className={style.onlineIcon} src={onlineIcon} alt="online icon" />
       <h3>{room}</h3>
     </div>
-    <div className={style.rightInnerContainer}>
-      <a href="/">
-        <img src={closeIcon} alt="close icon" />
-      </a>
-    </div>
+    <button className={style.button} onClick={collapse}>
+      ^
+    </button>
   </div>
 );
 
