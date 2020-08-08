@@ -2,19 +2,17 @@ import React, { useState, useEffect } from 'react';
 import queryString from 'query-string';
 import io from 'socket.io-client';
 import { useHistory } from 'react-router';
-import ReactPlayer from 'react-player/youtube';
 import { apiUrl } from '../../services/config';
 import style from './Chat.module.css';
-// import TextContainer from '../TextContainer/TextContainer';
 
 import InfoBar from '../InfoBar/InfoBar';
 import Input from '../Input/Input';
 import Messages from '../Messages/Messages';
+import Player from '../Player/Player';
 
 let socket;
 
 const Chat = () => {
-  // const { currentUser } = useAuth();
   const currentUser = JSON.parse(window.localStorage.getItem('user'));
   const [showChatBox, setShowChatBox] = useState(1);
   const [curRoom, setRoom] = useState('');
@@ -52,7 +50,7 @@ const Chat = () => {
       setMessages(prevMessages => [...prevMessages, newMessage]);
     });
   }, []);
-  if (!currentUser) return <p> Loading </p>;
+  if (!currentUser || !socket) return <p> Loading </p>;
 
   const sendMessage = event => {
     event.preventDefault();
@@ -68,17 +66,12 @@ const Chat = () => {
       });
     }
   };
-  if (!currentUser) return <p> Loading </p>;
+  if (!currentUser || !socket) return <p> Loading </p>;
 
   return (
     <div className={style.outerContainer}>
       <div className={style.videoContainer}>
-        <ReactPlayer
-          url="https://www.youtube.com/watch?v=wF_B_aagLfI"
-          width="100%"
-          height="100%"
-          controls={true}
-        />
+        <Player socket={socket} />
       </div>
       <div className={style.container}>
         <InfoBar
@@ -95,7 +88,6 @@ const Chat = () => {
           visible={showChatBox}
         />
       </div>
-      {/* <TextContainer users={users} /> */}
     </div>
   );
 };
