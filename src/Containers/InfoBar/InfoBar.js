@@ -1,8 +1,6 @@
 import React from 'react';
 
 import onlineIcon from '../../Utils/onlineIcon.png';
-import closeIcon from '../../Utils/closeIcon.png';
-
 import style from './InfoBar.module.css';
 
 const InfoBar = ({ room, collapse }) => (
