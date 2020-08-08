@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import ReactPlayer from 'react-player';
 
-const Player = ({ socket }) => {
+const Player = ({ socket, videoUrl }) => {
   const [playerState, setplayerState] = useState({
-    url: 'https://www.youtube.com/watch?v=wF_B_aagLfI',
+    url: videoUrl,
     playing: false,
     played: 0,
     loaded: 0,

@@ -9,6 +9,7 @@ import InfoBar from '../InfoBar/InfoBar';
 import Input from '../Input/Input';
 import Messages from '../Messages/Messages';
 import Player from '../Player/Player';
+import Spinner from '../Spinner/Spinner';
 
 let socket;
 
@@ -18,6 +19,7 @@ const Chat = () => {
   const [curRoom, setRoom] = useState('');
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState([]);
+  const [videoUrl, setVideoUrl] = useState(null);
   const history = useHistory();
 
   const ENDPOINT = apiUrl;
@@ -50,7 +52,7 @@ const Chat = () => {
       setMessages(prevMessages => [...prevMessages, newMessage]);
     });
   }, []);
-  if (!currentUser || !socket) return <p> Loading </p>;
+  if (!currentUser || !socket) return <Spinner />;
 
   const sendMessage = event => {
     event.preventDefault();
@@ -66,12 +68,12 @@ const Chat = () => {
       });
     }
   };
-  if (!currentUser || !socket) return <p> Loading </p>;
+  if (!currentUser || !socket) return <Spinner />;
 
   return (
     <div className={style.outerContainer}>
       <div className={style.videoContainer}>
-        <Player socket={socket} />
+        <Player socket={socket} videoUrl={videoUrl} />
       </div>
       <div className={style.container}>
         <InfoBar
