@@ -12,7 +12,7 @@ const Player = ({ socket }) => {
   const playerRef = useRef();
 
   useEffect(() => {
-    socket.emit('sendMessage', 'Working in Player', response => {});
+    // socket.emit('sendMessage', 'Working in Player', response => {});
     socket.on('getPlayPause', (isPlaying, time) => {
       setPlayerState(prev => {
         return { ...prev, played: time, playing: isPlaying };
@@ -37,7 +37,7 @@ const Player = ({ socket }) => {
     });
     console.log('a', playerState.playing, playerState.played, isPlaying);
     socket.emit('setPlayPause', isPlaying, playerState.played);
-    socket.emit('sendMessage', `${isPlaying} ${playerState.played}`);
+    // socket.emit('sendMessage', `${isPlaying} ${playerState.played}`);
 
     //   return { ...prev, playing: !playerState.playing };
     // });
