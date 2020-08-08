@@ -1,9 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
 import ReactPlayer from 'react-player';
 
-const Player = ({ socket, videoUrl }) => {
+import styles from './Player.module.css';
+
+const Player = ({ socket }) => {
   const [playerState, setPlayerState] = useState({
-    url: 'https://www.youtube.com/watch?v=wF_B_aagLfI',
+    url: 'https://youtu.be/xUPHAVYEVOY',
+    tempURL: '',
     playing: false,
     played: 0,
     loaded: 0,
@@ -19,9 +22,15 @@ const Player = ({ socket, videoUrl }) => {
       });
       playerRef.current.seekTo(time, 'fraction');
     });
+
     // socket.on('message', message => console.log(message));
     playerRef.current.seekTo(10);
 
+    socket.on('getURL', ({ URL }) => {
+      setPlayerState(prev => {
+        return { ...prev, url: URL };
+      });
+    });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -49,22 +58,46 @@ const Player = ({ socket, videoUrl }) => {
   //   e.preventDefault();
   //   playerRef.current.seekTo(20, 'seconds');
   // };
+
+  // jugaad :(
+
+  const setURL = URL => {
+    setPlayerState(prev => {
+      return { ...prev, tempURL: URL };
+    });
+  };
+
+  const onSubmit = e => {
+    e.preventDefault();
+    socket.emit('sendURL', playerState.tempURL, () => {});
+  };
+
   return (
-    <ReactPlayer
-      ref={playerRef}
-      url={playerState.url}
-      width="100%"
-      height="100%"
-      controls={true}
-      playing={playerState.playing}
-      onProgress={handleProgress}
-      onPlay={() => {
-        handlePlayPause(true);
-      }}
-      onPause={() => {
-        handlePlayPause(false);
-      }}
-    />
+    <React.Fragment>
+      <ReactPlayer
+        ref={playerRef}
+        url={playerState.url}
+        width="100%"
+        height="91%"
+        controls={true}
+        playing={playerState.playing}
+        onProgress={handleProgress}
+        onPlay={() => {
+          handlePlayPause(true);
+        }}
+        onPause={() => {
+          handlePlayPause(false);
+        }}
+      />
+      <form className={styles.form} onSubmit={e => onSubmit(e)}>
+        <input
+          className={styles.input}
+          placeholder="Enter video URL"
+          onChange={e => setURL(e.target.value)}
+        />
+        <button className={styles.sendButton}>Submit</button>
+      </form>
+    </React.Fragment>
   );
 };
 

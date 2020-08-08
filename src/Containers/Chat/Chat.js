@@ -19,7 +19,6 @@ const Chat = () => {
   const [curRoom, setRoom] = useState('');
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState([]);
-  const [videoUrl, setVideoUrl] = useState(null);
   const history = useHistory();
 
   const ENDPOINT = apiUrl;
@@ -73,7 +72,7 @@ const Chat = () => {
   return (
     <div className={style.outerContainer}>
       <div className={style.videoContainer}>
-        <Player socket={socket} videoUrl={videoUrl} />
+        <Player socket={socket} />
       </div>
       <div className={style.container}>
         <InfoBar
