@@ -14,6 +14,7 @@ const Player = ({ socket }) => {
     seeking: false,
   });
   const playerRef = useRef();
+  const [initialRender, setInitialRender] = useState(true);
 
   useEffect(() => {
     if (playerState.seeking) playerRef.current.seekTo(playerState.played, 'seconds');
@@ -23,7 +24,12 @@ const Player = ({ socket }) => {
   }, [playerState.seeking]);
 
   useEffect(() => {
+    if (initialRender) {
+      setInitialRender(false);
+      return;
+    }
     if (playerState.seeking) return;
+
     socket.emit('setPlayPause', playerState.playing, playerState.played, response => {});
   }, [playerState.playing]);
 
