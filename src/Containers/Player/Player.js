@@ -46,13 +46,23 @@ const Player = ({ socket, room }) => {
       });
     });
     socket.on('sendAllInfo', () => {
+      // socket.emit('sendURL', playerRef.current.props.url, () => {
+      //   socket.emit(
+      //     'setPlayPause',
+      //     playerRef.current.props.playing,
+      //     playerRef.current.getCurrentTime(),
+      //     response => {}
+      //   );
+      // });
       socket.emit('sendURL', playerRef.current.props.url, () => {});
-      socket.emit(
-        'setPlayPause',
-        playerRef.current.props.playing,
-        playerRef.current.getCurrentTime(),
-        response => {}
-      );
+      setTimeout(() => {
+        socket.emit(
+          'setPlayPause',
+          playerRef.current.props.playing,
+          playerRef.current.getCurrentTime(),
+          response => {}
+        );
+      }, 1000);
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
