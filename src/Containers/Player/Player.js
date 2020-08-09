@@ -42,15 +42,9 @@ const Player = ({ socket }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const handleProgress = currentTime => {
-    setPlayerState(prev => {
-      return { ...prev, played: currentTime.playedSeconds };
-    });
-  };
-
   const handlePlayPause = isPlaying => {
     setPlayerState(prev => {
-      return { ...prev, playing: isPlaying };
+      return { ...prev, playing: isPlaying, played: playerRef.current.getCurrentTime() };
     });
   };
 
@@ -74,7 +68,6 @@ const Player = ({ socket }) => {
         height="91%"
         controls={true}
         playing={playerState.playing}
-        onProgress={handleProgress}
         onPlay={() => {
           handlePlayPause(true);
         }}
