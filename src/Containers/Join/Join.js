@@ -9,7 +9,7 @@ const Join = () => {
     <div className={styles.joinOuterContainer}>
       <div className={styles.joinInnerContainer}>
         <form>
-          <h1 className={styles.heading}>Create a Room</h1>
+          <h1 className={styles.heading}>Create/Join a Room</h1>
           <div>
             <input
               placeholder="Enter desired Room ID"
