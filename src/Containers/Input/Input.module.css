@@ -27,6 +27,7 @@ input:focus, textarea:focus, select:focus{
   display: inline-block;
   border: none;
   width: 20%;
+  cursor: pointer;
 }
 
 @media (min-width: 320px) and (max-width: 480px) {
