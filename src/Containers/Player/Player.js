@@ -3,7 +3,7 @@ import ReactPlayer from 'react-player';
 
 import styles from './Player.module.css';
 
-const Player = ({ socket }) => {
+const Player = ({ socket, room }) => {
   const [playerState, setPlayerState] = useState({
     url: '',
     tempURL: '',
@@ -45,6 +45,15 @@ const Player = ({ socket }) => {
         return { ...prev, url: URL };
       });
     });
+    socket.on('sendAllInfo', () => {
+      socket.emit('sendURL', playerRef.current.props.url, () => {});
+      socket.emit(
+        'setPlayPause',
+        playerRef.current.props.playing,
+        playerRef.current.getCurrentTime(),
+        response => {}
+      );
+    });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -81,6 +90,13 @@ const Player = ({ socket }) => {
           handlePlayPause(false);
         }}
       />
+      {/* <button
+        onClick={() => {
+          console.log('ab', playerRef.current);
+        }}
+      >
+        check
+      </button> */}
       <form className={styles.form} onSubmit={e => onSubmit(e)}>
         <input
           className={styles.input}
