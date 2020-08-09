@@ -3,7 +3,7 @@ import ReactPlayer from 'react-player';
 
 import styles from './Player.module.css';
 
-const Player = ({ socket }) => {
+const Player = ({ socket, room }) => {
   const [playerState, setPlayerState] = useState({
     url: '',
     tempURL: '',
@@ -45,7 +45,52 @@ const Player = ({ socket }) => {
         return { ...prev, url: URL };
       });
     });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    socket.on('sharePlayerInfo', () => {
+      socket.emit(
+        'sendPlayerInfo',
+        {
+          url: playerRef.current.props.url,
+          playing: playerRef.current.props.playing,
+          played: playerRef.current.getCurrentTime(),
+        },
+        response => {
+          if (response?.error) {
+            alert('Error in sharePlayerInfo');
+          }
+        }
+      );
+      // socket.emit('sendURL', playerRef.current.props.url, () => {
+      //   socket.emit(
+      //     'setPlayPause',
+      //     playerRef.current.props.playing,
+      //     playerRef.current.getCurrentTime(),
+      //     response => {}
+      //   );
+      // });
+      // socket.emit('sendURL', playerRef.current.props.url, () => {});
+      // setTimeout(() => {
+      //   socket.emit(
+      //     'setPlayPause',
+      //     playerRef.current.props.playing,
+      //     playerRef.current.getCurrentTime(),
+      //     response => {}
+      //   );
+      // }, 1000);
+    });
+
+    socket.on('getPlayerInfo', playerInfo => {
+      // console.log(URL, playing, time);
+      console.log(playerInfo);
+      setPlayerState(prev => {
+        return { ...prev, ...playerInfo };
+      });
+      // setPlayerState(prev => {
+      //   return { ...prev, url: URL };
+      // },
+      // setPlayerState(prev => {
+      //   return { ...prev, played: time, playing, seeking: true };
+      // }));
+    });
   }, []);
 
   const handlePlayPause = isPlaying => {
@@ -81,6 +126,13 @@ const Player = ({ socket }) => {
           handlePlayPause(false);
         }}
       />
+      <button
+        onClick={() => {
+          console.log('ab', playerRef.current, playerState);
+        }}
+      >
+        check
+      </button>
       <form className={styles.form} onSubmit={e => onSubmit(e)}>
         <input
           className={styles.input}

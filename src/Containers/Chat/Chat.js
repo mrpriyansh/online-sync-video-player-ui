@@ -72,7 +72,7 @@ const Chat = () => {
   return (
     <div className={style.outerContainer}>
       <div className={style.videoContainer}>
-        <Player socket={socket} />
+        <Player socket={socket} room={curRoom} />
       </div>
       <div className={style.container}>
         <InfoBar
