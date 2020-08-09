@@ -5,26 +5,34 @@ import styles from './Player.module.css';
 
 const Player = ({ socket }) => {
   const [playerState, setPlayerState] = useState({
-    url: 'https://youtu.be/xUPHAVYEVOY',
+    url: '',
     tempURL: '',
     playing: false,
     played: 0,
     loaded: 0,
     duration: 0,
+    seeking: false,
   });
   const playerRef = useRef();
 
   useEffect(() => {
-    // socket.emit('sendMessage', 'Working in Player', response => {});
-    socket.on('getPlayPause', (isPlaying, time) => {
-      setPlayerState(prev => {
-        return { ...prev, played: time, playing: isPlaying };
-      });
-      playerRef.current.seekTo(time, 'fraction');
+    if (playerState.seeking) playerRef.current.seekTo(playerState.played, 'seconds');
+    setPlayerState(prev => {
+      return { ...prev, seeking: false };
     });
+  }, [playerState.seeking]);
 
-    // socket.on('message', message => console.log(message));
-    playerRef.current.seekTo(10);
+  useEffect(() => {
+    if (playerState.seeking) return;
+    socket.emit('setPlayPause', playerState.playing, playerState.played, response => {});
+  }, [playerState.playing]);
+
+  useEffect(() => {
+    socket.on('getPlayPause', ({ isPlaying, time }) => {
+      setPlayerState(prev => {
+        return { ...prev, played: time, playing: isPlaying, seeking: true };
+      });
+    });
 
     socket.on('getURL', ({ URL }) => {
       setPlayerState(prev => {
@@ -36,7 +44,7 @@ const Player = ({ socket }) => {
 
   const handleProgress = currentTime => {
     setPlayerState(prev => {
-      return { ...prev, played: currentTime.played };
+      return { ...prev, played: currentTime.playedSeconds };
     });
   };
 
@@ -44,22 +52,7 @@ const Player = ({ socket }) => {
     setPlayerState(prev => {
       return { ...prev, playing: isPlaying };
     });
-    console.log('a', playerState.playing, playerState.played, isPlaying);
-    socket.emit('setPlayPause', isPlaying, playerState.played);
-    // socket.emit('sendMessage', `${isPlaying} ${playerState.played}`);
-
-    //   return { ...prev, playing: !playerState.playing };
-    // });
-    // socket.emit('setPlayPause', playerState.played, response => {});
-    // socket.emit('sendMessage', `${playerState.playing}`);
   };
-
-  // const handleButton = e => {
-  //   e.preventDefault();
-  //   playerRef.current.seekTo(20, 'seconds');
-  // };
-
-  // jugaad :(
 
   const setURL = URL => {
     setPlayerState(prev => {
