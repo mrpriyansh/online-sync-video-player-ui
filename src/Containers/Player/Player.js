@@ -126,13 +126,13 @@ const Player = ({ socket, room }) => {
           handlePlayPause(false);
         }}
       />
-      <button
+      {/* <button
         onClick={() => {
           console.log('ab', playerRef.current, playerState);
         }}
       >
         check
-      </button>
+      </button> */}
       <form className={styles.form} onSubmit={e => onSubmit(e)}>
         <input
           className={styles.input}
