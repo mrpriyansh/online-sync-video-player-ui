@@ -23,15 +23,13 @@ function Landing() {
           </p>
         </div>
         <div className="posters">
-          <img src={Poster2} alt="" className={land.img_card_1} />
-          <img src={Poster1} alt="" className={land.img_card_1} />
-          <img src={Poster3} alt="" className={land.img_card_1} />
-          <img src={Poster4} alt="" className={land.img_card_1} />
+          <img src={Poster2} alt="" className={land.img_card_1} width="16" height="9" />
+          <img src={Poster1} alt="" className={land.img_card_1} width="16" height="9" />
+          <img src={Poster3} alt="" className={land.img_card_1} width="16" height="9" />
+          <img src={Poster4} alt="" className={land.img_card_1} width="16" height="9" />
         </div>
       </div>
-      <div>
-        <Landing2 />
-      </div>
+      <Landing2 />
     </div>
   );
 }

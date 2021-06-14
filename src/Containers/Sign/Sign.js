@@ -16,6 +16,8 @@ const Sign = () => {
         <img
           className={styles.img}
           alt="login"
+          width="16"
+          height="9"
           src="https://c4.wallpaperflare.com/wallpaper/221/116/854/joaquin-phoenix-joker-batman-fire-car-hd-wallpaper-thumb.jpg"
         />
         <p className={styles.p}>
