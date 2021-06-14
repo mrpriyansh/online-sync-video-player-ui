@@ -6,8 +6,10 @@ export default () => {
     <div>
       <img
         src={spinner}
-        style={{ width: '200px', margin: 'auto', display: 'block' }}
+        style={{ width: '200px', height: 'auto', margin: 'auto', display: 'block' }}
         alt="Loading..."
+        width="100"
+        height="100"
       />
     </div>
   );

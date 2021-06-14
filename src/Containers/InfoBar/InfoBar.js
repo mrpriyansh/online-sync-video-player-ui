@@ -6,7 +6,7 @@ import style from './InfoBar.module.css';
 const InfoBar = ({ room, collapse }) => (
   <div className={style.infoBar}>
     <div className={style.leftInnerContainer}>
-      <img className={style.onlineIcon} src={onlineIcon} alt="online icon" />
+      <img className={style.onlineIcon} src={onlineIcon} alt="online icon" width="10" height="10" />
       <h3>{room}</h3>
     </div>
     <button className={style.button} onClick={collapse}>

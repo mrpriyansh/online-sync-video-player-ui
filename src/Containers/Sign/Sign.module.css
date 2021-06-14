@@ -14,20 +14,23 @@
 }
 
 .formcontainer {
+  /* width: 50%; */
   margin: 0 5%;
   margin-top: auto;
   margin-bottom: auto;
 }
 
 .img {
+  width: 100%;
+  height: auto;
   max-width: 100%;
   max-height: 100%;
 }
 
 .p {
-	font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto', sans-serif;
   color: rgba(255, 255, 255, 1);
-	font-size: 20px;
+  font-size: 20px;
   text-align: center;
 }
 
@@ -38,5 +41,4 @@
   .wrapper {
     justify-content: space-around;
   }
-
 }

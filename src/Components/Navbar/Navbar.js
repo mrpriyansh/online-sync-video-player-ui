@@ -17,7 +17,13 @@ const Navbar = props => {
       <nav className={styles.navbar__navigation}>
         <div>
           <Link to="/">
-            <img className={styles.navbar__logo} alt="home" src="favicon.ico" />
+            <img
+              className={styles.navbar__logo}
+              alt="logo"
+              src="favicon.ico"
+              width="40"
+              height="40"
+            />
           </Link>
         </div>
         <div className={styles.spacer}></div>

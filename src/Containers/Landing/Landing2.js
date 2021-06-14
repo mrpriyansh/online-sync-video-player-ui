@@ -1,12 +1,12 @@
 import React from 'react';
 import Style from './Landing2.module.css';
 import Accordion from './Accordion';
-import net from './image.png';
+import net from './netflix.jpeg';
 
 function Landing2() {
   return (
     <div className={Style.Landing}>
-      <img alt="pic" src={net} className={Style.image} />
+      <img alt="pic" src={net} className={Style.image} width="16" height="9" />
       <div className={Style.acc}>
         <h1 className={Style.how}>How it works</h1>
         <Accordion
