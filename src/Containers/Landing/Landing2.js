@@ -1,7 +1,7 @@
 import React from 'react';
 import Style from './Landing2.module.css';
 import Accordion from './Accordion';
-import net from './image.png';
+import net from './netflix.jpeg';
 
 function Landing2() {
   return (
